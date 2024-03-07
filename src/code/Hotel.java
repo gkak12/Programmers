@@ -6,6 +6,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 호텔 대실
+ * https://school.programmers.co.kr/learn/courses/30/lessons/155651
+ * 
+ * @author hyunjun
+ *
+ */
+
 public class Hotel {
 
 	public static void main(String[] args) {
