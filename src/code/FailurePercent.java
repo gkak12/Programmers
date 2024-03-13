@@ -5,8 +5,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+
+/**
+ * 실패율
+ * https://school.programmers.co.kr/learn/courses/30/lessons/42889
+ * 
+ * @author hyunjun
+ *
+ */
 
 public class FailurePercent {
 
@@ -51,13 +57,13 @@ public class FailurePercent {
 		int[] answer = new int[N];
         List<double[]> list = new ArrayList<double[]>();
         
-        Arrays.sort(stages);
+        Arrays.sort(stages);	// 사용자가 있는 스테이지 오름차순 정렬
         
         for(int n = 1 ; n <= N ; n++) {
-        	int total = stages.length;
-        	int fail = 0;
+        	int total = stages.length;	// 현재 스테이지에 도달한 사용자 수
+        	int fail = 0;	// 실패한 사용자 인덱스
         	
-        	for(int stage : stages) {
+        	for(int stage : stages) {	// 스테이지 실패한 사용자 수
         		if(stage > n) {
         			break;
         		}
@@ -65,15 +71,15 @@ public class FailurePercent {
         		fail++;
         	}
         	
-        	System.out.println(n + ": " + fail + "/" + total);
+//        	System.out.println(n + ": " + fail + "/" + total);
         	
-        	stages = Arrays.copyOfRange(stages, fail, total);
-        	double percent = total == 0 ? 0 : (double) fail/total; 
+        	stages = Arrays.copyOfRange(stages, fail, total);	// 다음 스테이지에 올라갈 사용자 복사
+        	double percent = total == 0 ? 0 : (double) fail/total;	// 현재 스테이지 실패율 계산
             
-            list.add(new double[] {(double) n, percent});
+            list.add(new double[] {(double) n, percent});	// 현재 스테이지와 실패율 리스트 저장
         }
         
-        Collections.sort(list, new Comparator<double[]>() {
+        Collections.sort(list, new Comparator<double[]>() {	// 실패율 내림차순 우선 정렬, 실패율이 동률이면 스테이지 번호 오름차순 정렬
         	@Override
         	public int compare(double[] o1, double[] o2) {
         		if(o1[1] != o2[1]) {
@@ -84,7 +90,7 @@ public class FailurePercent {
         	}
 		});
         
-        answer = list.stream().mapToInt(arr -> (int) arr[0]).toArray();
+        answer = list.stream().mapToInt(arr -> (int) arr[0]).toArray();	// 리스트 배열로 변환, 스테이지 번호 반환
         return answer;
     }
 }
