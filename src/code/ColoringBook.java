@@ -5,6 +5,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 카카오프렌즈 컬러링북
+ * https://school.programmers.co.kr/learn/courses/30/lessons/1829
+ * 
+ * @author hyunjun
+ *
+ */
+
 public class ColoringBook {
 
 	public static void main(String[] args) {
