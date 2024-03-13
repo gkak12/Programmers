@@ -5,6 +5,14 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
+/**
+ * 가장 먼 노드
+ * https://school.programmers.co.kr/learn/courses/30/lessons/49189
+ * 
+ * @author hyunjun
+ *
+ */
+
 public class FurthestNode {
 
 	public static void main(String[] args) {
@@ -20,7 +28,7 @@ public class FurthestNode {
         int depth = 0;
         int maxDepth = 0;
         
-        // 1. 각 노드별 depth 관리하는 map 생성
+        // 1. 시작노드에서 각 노드별 depth 저장하는 map 생성
         Map<Integer, Integer> map = new HashMap<>();
         
         for(int[] e : edge) {
@@ -39,22 +47,22 @@ public class FurthestNode {
         	int currNode = tmp[0];
         	int currDepth = tmp[1];
         	
-        	if(currDepth > maxDepth) {
+        	if(currDepth > maxDepth) {	// depth 갱신
         		maxDepth = currDepth;
         	}
         	
         	for(int[] e : edge) {
         		int nextNode;
         		
-        		if(e[0] == currNode) {
+        		if(e[0] == currNode) {	// 현재노드와 간선으로 연결된 경우
         			nextNode = e[1];
-        		} else if(e[1] == currNode) {
+        		} else if(e[1] == currNode) {	// 현재노드와 간선으로 연결된 경우
         			nextNode = e[0];
-        		} else {
+        		} else {	// 간선으로 연결되지 않은 경우
         			continue;
         		}
 
-        		if(map.get(nextNode) == null && nextNode != startNode) {
+        		if(map.get(nextNode) == null && nextNode != startNode) {	// 다음노드를 방문하지 않았고 다음노드가 시작노드가 아닌 경우
         			map.put(nextNode, currDepth+1);
         			queue.offer(new int[] {nextNode, currDepth+1});
         		}
