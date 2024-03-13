@@ -5,7 +5,12 @@ import java.util.Deque;
 
 /**
  * 행렬 테두리 회전하기
+ * https://school.programmers.co.kr/learn/courses/30/lessons/77485
+ * 
+ * @author hyunjun
+ *
  */
+
 public class MatrixEdge {
 	public int[] solution(int rows, int columns, int[][] queries) {
         int answerLength = queries.length;
