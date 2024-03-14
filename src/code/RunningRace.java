@@ -3,6 +3,14 @@ package code;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 달리기 경주
+ * https://school.programmers.co.kr/learn/courses/30/lessons/178871
+ * 
+ * @author hyunjun
+ *
+ */
+
 public class RunningRace {
 
 	public static void main(String[] args) {
