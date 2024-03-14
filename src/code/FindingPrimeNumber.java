@@ -29,14 +29,14 @@ public class FindingPrimeNumber {
         String[] sArr = numbers.split("");
         set = new HashSet<Integer>();
         
-        for(String s : sArr) {
+        for(String s : sArr) {	// 1자리 수 set에 추가
         	set.add(Integer.parseInt(s));
         }
         
         int r = 2;
         int len = numbers.length();
         
-        while(r <= len) {	// 2자리부터 len자리까지 숫자 생성
+        while(r <= len) {	// 2자리 수 부터 len자리까지 숫자 생성
         	boolean[] visitLog = new boolean[sArr.length];
         	int depth = 0;
         	int[] out = new int[r];
@@ -85,7 +85,7 @@ public class FindingPrimeNumber {
 		
 		Double d = Math.sqrt(num);
 		
-		for (int i = 2; i <= d.intValue() ; i++) {
+		for(int i = 2; i <= d.intValue() ; i++) {
 			if (num % i == 0) {
 				return false;
 			}
