@@ -7,6 +7,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+/**
+ * 석유 시추
+ * https://school.programmers.co.kr/learn/courses/30/lessons/250136
+ * 
+ * @author hyunjun
+ *
+ */
+
 public class OilDrilling {
 
 	public static void main(String[] args) {
