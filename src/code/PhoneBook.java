@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 전화번호부
+ * 전화번호 목록
  * https://school.programmers.co.kr/learn/courses/30/lessons/42577
  * 
  * @author hyunjun
@@ -40,20 +40,20 @@ public class PhoneBook {
 		
 		Set<Integer> digitSet = new HashSet<Integer>();
 		
-		for(String p : phone_book) {
+		for(String p : phone_book) {	// 자릿수 저장하는 HashSet
 			digitSet.add(p.length());
 		}
 
         Map<String, Integer> map = new HashMap<String, Integer>();
         
         for(String p : phone_book) {
-        	for(Integer d : digitSet) {
+        	for(Integer d : digitSet) {	// 자릿수 HashSet 기준으로 중복 여부 파악
         		if(p.length() >= d) {
         			String s = p.substring(0, d);
         			
-        			if(map.get(s) == null && p.length() <= d) {
+        			if(map.get(s) == null && p.length() <= d) {	// 중복되지 않는 경우
         				map.put(s, 1);
-        			} else if(map.get(s) != null && map.get(s) >= 1) {
+        			} else if(map.get(s) != null && map.get(s) >= 1) {	// 중복되는 경우
             			return false;
             		}
         		}
