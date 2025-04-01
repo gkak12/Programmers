@@ -1,5 +1,7 @@
 package code;
 
+import java.util.Stack;
+
 /**
  * 타겟 넘버
  * https://school.programmers.co.kr/learn/courses/30/lessons/43165
@@ -30,7 +32,25 @@ public class TargetNumber {
         	arr[i] = numbers[i-1];
         }
         
-        answer = search(1, 0, target, arr);
+//        answer = search(1, 0, target, arr);
+
+		Stack<int[]> stack = new Stack<>();
+		stack.push(new int[]{1, 0});
+
+		while(!stack.isEmpty()){
+			int[] curr = stack.pop();
+			int currIdx = curr[0];
+			int currVal = curr[1];
+
+			if(currIdx == arr.length){
+				answer = currVal == target ? answer+1 : answer;
+				continue;
+			}
+
+			stack.push(new int[]{currIdx+1, currVal-arr[currIdx]});
+			stack.push(new int[]{currIdx+1, currVal+arr[currIdx]});
+		}
+
         return answer;
     }
 	
