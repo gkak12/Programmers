@@ -44,15 +44,18 @@ public class PersonnelEvaluation {
         		}
         	}
 		});
-        
-        // 완호 등수 확인
+
+		/**
+		 * 완호 등수 확인
+		 * 근무태도점수는 내림차순으로 정렬되었기 때문에 동료평가점수만 확인하면 됨
+		 */
         int maxScore = 0;
         for(int[] score : scores) {
-        	if(score[1] < maxScore) {	// 인센티브 못 받는 경우
-        		if(score.equals(std)) {	// 완호인 경우
+        	if(score[1] < maxScore) {	// 동료평가점수가 낮아서 인센티브 못 받는 경우
+        		if(score.equals(std)) {	// 그 경우가 완호인 경우
         			return -1;
         		}
-        	} else {	// 인센티브 받는 경우
+        	} else {	// 동료평가점수가 낮지 않아서 인센티브 받는 경우
         		maxScore = score[1];
         		
         		if(!score.equals(std) && score[0]+score[1] > std[0]+std[1]) {	// 완호보다 점수 높은 직원
