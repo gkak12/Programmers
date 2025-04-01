@@ -28,38 +28,33 @@ public class Spicer {
 	}
 
 	public static int solution(int[] scoville, int K) {
-        int answer = 0;
-        
-        Arrays.sort(scoville);
-        PriorityQueue<Integer> list = new PriorityQueue<Integer>();
-        
-        for(int s : scoville) {
-        	list.add(s);
-        }
-        
-        int sNum = 2;
-        boolean flag = list.peek() < K ? true : false;
-        
-        while(flag) {	// 스코빌 지수 보다 작은 경우
-        	int food1 = list.poll();
-        	int food2 = list.poll();
-        	int newFood = food1 + (food2*sNum);
+		int answer = 0;
 
-        	list.add(newFood);
-        	answer++;
-        	
-        	if(list.peek() < K) {
-        		flag = true;
-        		
-        		if(list.size() == 1) {
-        			flag = false;
-        			answer = -1;
-        		}
-        	} else {
-        		flag = false;
-        	}
-        }
-        
-        return answer;
+		PriorityQueue<Integer> queue = new PriorityQueue<>();
+
+		// 배열 -> 우선순위 큐 저장
+		for(int sc : scoville){
+			queue.add(sc);
+		}
+
+		// 스코빌 지수 탐색
+		while(!queue.isEmpty()){
+			if(queue.peek() >= K){  // 제일 작은 스코빌 지수가 K 이상인 경우 종료
+				break;
+			} else {    // 제일 작은 스코빌 지수가 K 미만인 경우
+				if(queue.size() < 2){   // 우선순위 큐 사이즈가 2미만인 경우 -1 리턴
+					answer = -1;
+				}
+
+				// 새로운 스코빌 지수 음식 추가
+				int firstSc = queue.poll();
+				int secondSc = queue.poll();
+				int newSc = firstSc + secondSc*2;
+				queue.add(newSc);
+				answer++;
+			}
+		}
+
+		return answer;
     }
 }

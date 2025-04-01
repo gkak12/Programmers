@@ -47,7 +47,7 @@ public class GameMap {
 		boolean[][] visit = new boolean[rows][cols];
 		visit[0][0] = true;
 		
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<>();
 		
 		while(!queue.isEmpty()) {
 			int[] curr = queue.poll();
