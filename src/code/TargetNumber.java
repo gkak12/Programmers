@@ -1,5 +1,7 @@
 package code;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -33,23 +35,9 @@ public class TargetNumber {
         }
         
 //        answer = search(1, 0, target, arr);
-
-		Stack<int[]> stack = new Stack<>();
-		stack.push(new int[]{1, 0});
-
-		while(!stack.isEmpty()){
-			int[] curr = stack.pop();
-			int currIdx = curr[0];
-			int currVal = curr[1];
-
-			if(currIdx == arr.length){
-				answer = currVal == target ? answer+1 : answer;
-				continue;
-			}
-
-			stack.push(new int[]{currIdx+1, currVal-arr[currIdx]});
-			stack.push(new int[]{currIdx+1, currVal+arr[currIdx]});
-		}
+		answer = searchRecursive(1, 0, target, arr);
+		answer = searchStack(1, 0, target, arr);
+		answer = searchQueue(1, 0, target, arr);
 
         return answer;
     }
@@ -67,5 +55,57 @@ public class TargetNumber {
 		int minusVal = val-arr[idx];
 		
 		return val + search(idx+1, plusVal, target, arr) + search(idx+1, minusVal, target, arr);
+	}
+
+	public static int searchRecursive(int idx, int val, int target, int[] arr){
+		if(idx == arr.length){
+			return val == target ? 1 : 0;
+		}
+
+		return val + searchRecursive(idx+1, val-arr[idx], target, arr) + searchRecursive(idx+1, val+arr[idx], target, arr);
+	}
+
+	public static int searchStack(int idx, int val, int target, int[] arr){
+		int answer = 0;
+		Stack<int[]> stack = new Stack<>();
+		stack.push(new int[]{1, 0});
+
+		while(!stack.isEmpty()){
+			int[] curr = stack.pop();
+			int currIdx = curr[0];
+			int currVal = curr[1];
+
+			if(currIdx == arr.length){
+				answer = currVal == target ? answer+1 : answer;
+				continue;
+			}
+
+			stack.push(new int[]{currIdx+1, currVal-arr[currIdx]});
+			stack.push(new int[]{currIdx+1, currVal+arr[currIdx]});
+		}
+
+		return answer;
+	}
+
+	public static int searchQueue(int idx, int val, int target, int[] arr){
+		int answer = 0;
+		Queue<int[]> queue = new LinkedList<>();
+		queue.offer(new int[]{1, 0});
+
+		while(!queue.isEmpty()){
+			int[] curr = queue.poll();
+			int currIdx = curr[0];
+			int currVal = curr[1];
+
+			if(currIdx == arr.length){
+				answer = currVal == target ? answer+1 : answer;
+				continue;
+			}
+
+			queue.offer(new int[]{currIdx+1, currVal-arr[currIdx]});
+			queue.offer(new int[]{currIdx+1, currVal+arr[currIdx]});
+		}
+
+		return answer;
 	}
 }
