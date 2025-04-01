@@ -1,5 +1,13 @@
 package code;
 
+/**
+ * 보석 쇼핑
+ * https://school.programmers.co.kr/learn/courses/30/lessons/67258
+ *
+ * @author hyunjun
+ *
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
