@@ -9,7 +9,7 @@ package code;
 
 import java.util.Arrays;
 
-public class park {
+public class Park {
 
     public static void main(String[] args){
         int[] mats = {5,3,2};
