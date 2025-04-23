@@ -18,7 +18,7 @@ public class MockTest {
 //        int[] answers = {3, 3, 1, 1, 2};
 
         int[] result = solution(answers);
-        System.out.println(result);
+        System.out.println(Arrays.toString(result));
     }
 
     public static int[] solution(int[] answers) {
@@ -42,12 +42,7 @@ public class MockTest {
 
         int[] result = Arrays.stream(arr)
             .filter(item -> item[1] == max)     // 가장 많이 맞춘 학생 조건 필터
-            .sorted(new Comparator<int[]>() {   // 학생 번호 오름차순으로 정렬
-                @Override
-                public int compare(int[] o1, int[] o2) {
-                    return Integer.compare(o1[0], o2[0]);
-                }
-            })
+            .sorted((o1, o2) -> Integer.compare(o1[0], o2[0]))
             .mapToInt(item -> item[0])
             .toArray();
 
