@@ -26,7 +26,7 @@ public class DividingElectricityNet {
 
     public static int solution(int n, int[][] wires) {
         int answer = -1;
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<>();
 
         for(int i = 0; i < wires.length; i++) {
             int removedIdx = i;     // 끊는 전선
