@@ -31,6 +31,7 @@ public class WordConversion {
 
         Queue<String[]> queue = new LinkedList<>();
         queue.add(new String[] {begin, "0"});   // 문자와 변환 횟수를 큐에 추가
+        boolean[] visited = new boolean[words.length];  // 노드 방문 여부
         int matchCnt = begin.length()-1;
 
         while(!queue.isEmpty()) {
@@ -43,7 +44,9 @@ public class WordConversion {
                 break;
             }
 
-            for(String word : words) {  // 단어 집합 탐색
+            for(int i = 0 ; i < words.length ; i++) {  // 단어 집합 탐색
+                String word = words[i];
+
                 int charCnt = 0;
                 boolean charFlag = false;
 
@@ -51,8 +54,8 @@ public class WordConversion {
                     continue;
                 }
 
-                for(int i = 0 ; i < word.length() ; i++) {
-                    if(currWord.charAt(i) == word.charAt(i)) {  // 1글자씩 비교해서 일치하는지 확인
+                for(int j = 0 ; j < word.length() ; j++) {
+                    if(currWord.charAt(j) == word.charAt(j)) {  // 1글자씩 비교해서 일치하는지 확인
                        charCnt++;
                     }
 
@@ -62,8 +65,9 @@ public class WordConversion {
                     }
                 }
 
-                if(charFlag) {  // 1글자를 제외한 나머지 글자가 일치하는 경우
+                if(charFlag && visited[i] == false) {  // 1글자를 제외한 나머지 글자가 일치하는 경우
                     queue.add(new String[] {word, String.valueOf(currCnt+1)});  // 다음 탐색 대상에 추가
+                    visited[i] = true;      // 방문 여부 수정
                 }
             }
         }
