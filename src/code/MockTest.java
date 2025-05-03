@@ -1,14 +1,13 @@
 package code;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 /**
  * 모의고사
  * https://school.programmers.co.kr/learn/courses/30/lessons/42840
  *
  * @author hyunjun
  */
+
+import java.util.Arrays;
 
 public class MockTest {
 

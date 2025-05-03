@@ -1,21 +1,20 @@
 package code;
 
-import java.util.Stack;
-
 /**
  * 네트워크
  * https://school.programmers.co.kr/learn/courses/30/lessons/43162
- * 
- * @author hyunjun
  *
+ * @author hyunjun
  */
+
+import java.util.Stack;
 
 public class Network {
 	public static void main(String[] args) {
-//		int n = 3;
-//		int[][] computers = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
 		int n = 3;
-		int[][] computers = {{1, 1, 0}, {1, 1, 1}, {0, 1, 1}};
+		int[][] computers = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
+//		int n = 3;
+//		int[][] computers = {{1, 1, 0}, {1, 1, 1}, {0, 1, 1}};
 		
 		int res = solution(n, computers);
 		System.out.println(res);
