@@ -19,16 +19,6 @@ public class ConnectingIsland {
         System.out.println(result);
     }
 
-    static class Edge {
-        int to;     // 연결된 섬 번호
-        int weight; // 다리 건설 비용
-
-        Edge(int to, int weight) {
-            this.to = to;
-            this.weight = weight;
-        }
-    }
-
     /**
      * 프림 알고리즘
      */
@@ -48,7 +38,8 @@ public class ConnectingIsland {
         PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));   // 우선순위 큐를 비용 오름차순 정렬 기준으로 생성
         pq.add(new Edge(0, 0));
 
-        int result = 0;
+        int val = 0;
+        int visitCnt = 0;
 
         while (!pq.isEmpty()) {     // 섬 탐색
             Edge curr = pq.poll();
@@ -58,7 +49,12 @@ public class ConnectingIsland {
             }
 
             visited[curr.to] = true;    // 방문 여부 갱신
-            result += curr.weight;      // 비용 갱신
+            val += curr.weight;         // 비용 갱신
+            visitCnt++;                 // 연결한 섬 갯수 갱신
+
+            if(visitCnt == n){  // 모든 섬을 다 연결한 경우 탐색 종료
+                break;
+            }
 
             for (Edge next : islandList.get(curr.to)) {     // 다음 연결할 섬 탐색
                 if (!visited[next.to]) {    // 아직 연결하지 않은 경우
@@ -67,7 +63,17 @@ public class ConnectingIsland {
             }
         }
 
-        return result;
+        return val;
+    }
+
+    static class Edge {
+        int to;         // 연결된 섬 번호
+        int weight;     // 다리 건설 비용
+
+        Edge(int to, int weight) {
+            this.to = to;
+            this.weight = weight;
+        }
     }
 
     /**
