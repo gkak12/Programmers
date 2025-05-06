@@ -22,12 +22,7 @@ public class ConnectingIsland {
     public static int solution(int n, int[][] costs){
         int val = 0;
 
-        Arrays.sort(costs, new Comparator<int[]>() {    // 비용 기준 오름차순 정렬(최소비용)
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return Integer.compare(o1[2], o2[2]);
-            }
-        });
+        Arrays.sort(costs, Comparator.comparingInt(o -> o[2]));  // 비용 기준 오름차순 정렬(최소비용)
 
         int[] rootArr = new int[n];     // 각 섬의 루트를 저장하는 배열
 
@@ -37,11 +32,11 @@ public class ConnectingIsland {
 
         for(int[] cost : costs){    // 간선 탐색
             // 각 섬의 루트 조회
-            int node1 = searchRoot(rootArr, cost[0]);
-            int node2 = searchRoot(rootArr, cost[1]);
+            int root1 = searchRoot(rootArr, cost[0]);
+            int root2 = searchRoot(rootArr, cost[1]);
 
-            if(node1 != node2){     // 각 섬의 루트가 다른 경우(사이클이 없는 경우)
-                merge(rootArr, node1, node2);   // 간선 연결
+            if(root1 != root2){     // 각 섬의 루트가 다른 경우(사이클이 없는 경우)
+                merge(rootArr, root1, root2);   // 간선 연결
                 val += cost[2];     // 비용 갱신
             }
         }
@@ -57,11 +52,11 @@ public class ConnectingIsland {
         return searchRoot(rootArr, rootArr[node]);
     }
 
-    public static void merge(int[] rootArr, int node1, int node2){  // 섬 연결, 작은 숫자의 섬을 루트로 설정
-        if(node1 < node2){
-            rootArr[node2] = node1;
+    public static void merge(int[] rootArr, int root1, int root2){  // 섬 연결, 작은 숫자의 섬을 루트로 설정
+        if(root1 < root2){
+            rootArr[root2] = root1;
         } else {
-            rootArr[node1] = node2;
+            rootArr[root1] = root2;
         }
     }
 
