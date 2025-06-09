@@ -20,13 +20,13 @@ public class DoublePriorityQueue {
     }
 
     public static int[] solution(String[] operations) {
-        int[] answer = {0,0};
+        int[] answer = new int[2];
         PriorityQueue<Integer> pq = new PriorityQueue<>();
 
         for(String operation : operations) {
             if(operation.equals("D 1")){    // 최대값 삭제
                 if(!pq.isEmpty()){  // 큐가 비어있지 않은 경우
-                    int max = pq.stream().mapToInt(Integer::intValue).max().orElseThrow();
+                    int max = pq.stream().mapToInt(Integer::intValue).max().getAsInt();
                     pq.remove(max);
                 }
             } else if(operation.equals("D -1")){    // 최소값 삭제
