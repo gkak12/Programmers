@@ -1,5 +1,12 @@
 package code;
 
+/**
+ * 도둑질
+ * https://school.programmers.co.kr/learn/courses/30/lessons/42897
+ *
+ * @author hyunjun
+ */
+
 import java.util.*;
 
 public class Stealing {
