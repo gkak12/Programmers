@@ -8,8 +8,13 @@ package code.kotlin
  *
  */
 
-import java.util.LinkedList
-import java.util.Queue
+import java.util.*
+import kotlin.collections.ArrayDeque
+import kotlin.collections.copyOf
+import kotlin.collections.indices
+import kotlin.collections.isNotEmpty
+import kotlin.collections.sort
+import kotlin.collections.toTypedArray
 
 fun main() {
     // val tickets = arrayOf(arrayOf("ICN", "JFK"), arrayOf("HND", "IAD"), arrayOf("JFK", "HND"))
@@ -28,8 +33,8 @@ fun solution(tickets: Array<Array<String>>): Array<String> {
     val start = "ICN"
     val length = tickets.size
 
-    val routeLog: Queue<StringBuilder> = LinkedList()
-    val visitLog: Queue<BooleanArray> = LinkedList()
+    val routeLog = ArrayDeque<StringBuilder>()
+    val visitLog = ArrayDeque<BooleanArray>()
 
     // 출발지 티켓 조회
     for (i in tickets.indices) {
@@ -49,12 +54,12 @@ fun solution(tickets: Array<Array<String>>): Array<String> {
 
     // 경로 탐색
     while (routeLog.isNotEmpty()) {
-        val route = routeLog.poll()
+        val route = routeLog.removeFirst()
         val str = route.length - 3
         val end = route.length
         val r1 = route.substring(str, end)
 
-        val visit = visitLog.poll()
+        val visit = visitLog.removeFirst()
         var flag = true
 
         for (v in visit) {

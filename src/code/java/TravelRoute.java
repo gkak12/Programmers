@@ -33,8 +33,8 @@ public class TravelRoute {
         String start = "ICN";
         int length = tickets.length;
         
-        Queue<StringBuilder> routeLog = new LinkedList<StringBuilder>();
-        Queue<boolean[]> visitLog = new LinkedList<boolean[]>();
+        Queue<StringBuilder> routeLog = new LinkedList<>();
+        Queue<boolean[]> visitLog = new LinkedList<>();
         
         // 출발지 티켓 조회
         for(int i = 0; i < tickets.length ; i++) {
