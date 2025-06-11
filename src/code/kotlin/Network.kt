@@ -10,18 +10,18 @@ package code.kotlin
 import java.util.Stack
 
 fun main(){
-    val n = 3;
+    val n = 3
     val computers = arrayOf(
-        arrayOf(1, 1, 0),
-        arrayOf(1, 1, 0),
-        arrayOf(0, 0, 1)
+        intArrayOf(1, 1, 0),
+        intArrayOf(1, 1, 0),
+        intArrayOf(0, 0, 1)
     )
 
     val result = solution(n, computers)
     println(result)
 }
 
-fun solution(n: Int, computers:Array<Array<Int>>): Int{
+fun solution(n: Int, computers:Array<IntArray>): Int{
     var answer = 0
     val visitLog = BooleanArray(n)
 
@@ -34,7 +34,7 @@ fun solution(n: Int, computers:Array<Array<Int>>): Int{
     return answer
 }
 
-fun search(selfIdx: Int, n:Int, computers: Array<Array<Int>>, visitLog: BooleanArray): Int{
+fun search(selfIdx: Int, n:Int, computers: Array<IntArray>, visitLog: BooleanArray): Int{
     val stack = Stack<Int>()
     stack.push(selfIdx)
 
