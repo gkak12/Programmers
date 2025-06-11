@@ -36,7 +36,7 @@ public class Network {
     }
 	
 	public static int search(int selfIdx, int n, int[][] computers, boolean[] visitLog) {
-		Stack<Integer> stack = new Stack<Integer>();
+		Stack<Integer> stack = new Stack<>();
 		stack.push(selfIdx);
 		
 		while(!stack.isEmpty()) {
