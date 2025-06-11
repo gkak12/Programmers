@@ -55,7 +55,7 @@ public class PrimeNumber {
 			return false;
 		}
 		
-		Double d = new Double(String.valueOf(Math.sqrt(n)));
+		Double d = Double.valueOf(Math.sqrt(n));
 		
 		for (int i = 2; i <= d.intValue() ; i++) {
 			if (n % i == 0) {
