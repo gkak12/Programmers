@@ -39,18 +39,18 @@ public class Advertisement {
             }
         }
 
+        // 슬라이딩 윈도우 초기값 세팅
         long timeVal = 0;
 
-        // 슬라이딩 윈도우 초기값 세팅
         for(int i = 0 ; i < advTime ; i++){
             timeVal += arr[i];
         }
 
-        long maxVal = timeVal;
-        int endTime = playTime-advTime;
-        int time = 0;
+        long maxVal = timeVal;  // 최대 누적 시간
+        int endTime = playTime-advTime; // 탐색 종료 시간
+        int time = 0;   // 최적 광고 시간
 
-        // 최적광고시간 탐색
+        // 최적 광고 시간 탐색
         for(int i = 1 ; i <= endTime ; i++){
             timeVal = timeVal-arr[i-1]+arr[advTime+i-1];
 
